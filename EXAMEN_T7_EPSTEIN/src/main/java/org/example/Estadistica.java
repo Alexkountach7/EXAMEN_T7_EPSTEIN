@@ -13,7 +13,7 @@ public class Estadistica implements Informes{
     @Override
     public void verpoliticos() {
         System.out.println("identificando a la clase politica");
-       
+
     }
 
     @Override

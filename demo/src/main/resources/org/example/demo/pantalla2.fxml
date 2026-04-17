@@ -3,12 +3,30 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.pantalla2controller">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
+      <Label text=" Mantenimiento personas">
+         <font>
+            <Font name="Comic Sans MS" size="12.0" />
+         </font>
+      </Label>
+      <TableView fx:id="personastableview" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nombretablecolumn" prefWidth="75.0" text="nombre" />
+          <TableColumn fx:id="edadtablecolumn" prefWidth="75.0" text="edad" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TextField fx:id="nombretextfield" promptText="Introduce nombre" />
+      <TextField fx:id="edadtextfield" promptText="Introduce edad" />
+      <Button mnemonicParsing="false" onAction="#guardarboton" text="guardar" />
       <Button fx:id="volver" mnemonicParsing="false" onAction="#volverbutton" text="volverpantalla" />
    </children>
 

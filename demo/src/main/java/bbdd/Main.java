@@ -1,8 +1,6 @@
 package bbdd;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Main {
         public static void main(String[] args) {
@@ -46,6 +44,31 @@ public class Main {
                 throw new RuntimeException(e);
             }
         }
+
+    public static void consulta (Connection conexion){
+
+        String query = "SELECT * FROM estudiantes";
+
+        //necesitamos dos variables de tipo Statement y ResultSet para realizar la consulta y guardar la respuesta
+        Statement stmt;
+        ResultSet respuesta;
+
+        try {
+            stmt = conexion.createStatement();
+            respuesta = stmt.executeQuery(query);
+
+            while (respuesta.next()){ //recorremos todas las filas existentes en la tabla y las imprimimos
+                int nia = respuesta.getInt("nia");
+                String nombre = respuesta.getString("nombre");
+                Date fecha_nacimiento = respuesta.getDate("fecha_nacimiento");
+                System.out.println("NIA: " + nia + " - Nombre: " + nombre + " - Fecha de nacimiento: " + fecha_nacimiento);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 
     }
 

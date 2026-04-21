@@ -7,7 +7,11 @@ public class Main {
 
             Connection bd = conexion();
             System.out.println("Realizando consultas...");
+            consulta(bd);
+            modificar(bd);
             desconectar(bd);
+
+
 
         }
 
@@ -47,7 +51,7 @@ public class Main {
 
     public static void consulta (Connection conexion){
 
-        String query = "SELECT * FROM estudiantes";
+        String query = "SELECT * FROM estudiante";
 
         //necesitamos dos variables de tipo Statement y ResultSet para realizar la consulta y guardar la respuesta
         Statement stmt;
@@ -68,6 +72,18 @@ public class Main {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+    public static void modificar (Connection conexion) {
+            Statement stmt;
+            String update = "UPDATE estudiante SET nombre = 'izzzz' WHERE nombre = 'izan'";
+            try {
+                stmt = conexion.createStatement();
+                stmt.executeQuery(update);
+            }catch (SQLException e) {
+                System.out.println(e.getMessage());
+                throw new RuntimeException(e);
+            }
     }
 
     }
